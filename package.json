@@ -40,5 +40,8 @@
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0"
   }
 }

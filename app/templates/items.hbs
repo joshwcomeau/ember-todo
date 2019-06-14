@@ -1,0 +1,11 @@
+<h2>Items</h2>
+
+<ul>
+{{#each model as |item|}}
+  {{todo-line-item
+    label=item.label
+    isCompleted=item.isCompleted id=item.id
+    handleToggle=(action "toggleItem" item.id)
+  }}
+{{/each}}
+</ul>
