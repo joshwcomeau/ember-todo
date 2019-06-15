@@ -1,4 +1,6 @@
 <li class="todo-list-item {{if this.isCompleted "is-completed"}}">
-  <input type="checkbox" checked={{this.isCompleted}} onClick={{handleToggle}}>
-  <span class="label">{{this.label}}</span>
+  <label>
+    <input type="checkbox" checked={{this.isCompleted}} onClick={{handleToggle}}>
+    <span class="label">{{this.label}}</span>
+  </label>
 </li>
