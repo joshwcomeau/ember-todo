@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 
 const app = express()
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 const port = 3000
 
@@ -28,7 +28,7 @@ app.get('/items', (req, res) => {
     attributes: items[id],
   }))
 
-  console.log('Request for all items!')
+  console.log('Request for all items!', items)
 
   res.send({ data: itemsArr });
 })
@@ -45,12 +45,21 @@ app.get('/items/:id', (req, res) => {
   })
 })
 
-app.put('/items/:id', (req, res) => {
-  console.log('put!', req.params)
-})
-
 app.patch('/items/:id', (req, res) => {
-  console.log('put!', req.params)
+  const {id} = req.params;
+  const {attributes} = req.body.data;
+
+  items[id] = attributes;
+
+  console.log(attributes)
+
+  res.send({
+    data: {
+      id,
+      type: 'item',
+      attributes: items[id],
+    }
+  })
 })
 
 app.post('/items', (req, res) => {
