@@ -7,7 +7,10 @@ export default Ember.Controller.extend({
         item.set('isCompleted', !item.get('isCompleted'));
         item.save();
       });
+    },
+    handleSubmit(ev, label) {
+      ev.preventDefault();
+      console.log(this, label);
     }
   }
-
 });
